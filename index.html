@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-qpuiv="X-UA-Compatible" content="ID=edge">
+	<meta name="viewport" content="width=device-width, inticial-scale=1">
+	<title>button animation example</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  outline: none;
+  color: #7a7a7a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+body {
+  /* background: #3498DB; */
+  font-family: "Open Sans", Sans-Serif;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  color: #7a7a7a;
+  text-align: center;
+  min-height: 140px;
+  margin-bottom: 60px;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+}
+
+h1 {
+  text-align: center;
+  margin: 100px auto 50px;
+  color: #7a7a7a;
+}
+
+
+.copyright {
+  font-size: 25px;
+  font-weight: 100;
+  color: #fff;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Tabs Start */
+.ease {
+  -webkit-transition: all 1111ms;
+  -moz-transition: all 1111ms;
+  -o-transition: all 1111ms;
+  -ms-transition: all 1111ms;
+  transition: all 1111ms;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tabs {
+  background: #fff;
+  position: relative;
+}
+
+.tabs > input,
+.tabs > span {
+  width: 18%;
+  height: 40px;
+  line-height: 38px;
+  position: absolute;
+  top: 0;
+  color: #009999;
+}
+
+.tabs > input {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  position: absolute;
+  z-index: 99;
+  -webkit-filter: alpha(opacity=0);
+}
+
+.tabs > span {
+  background: transparent;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 10px 0 10px 0;
+  -webkit-border-radius: 10px 0 10px 0;
+  -moz-border-radius: 10px 0 10px 0;
+  -ms-border-radius: 10px 0 10px 0;
+  -o-border-radius: 10px 0 10px 0;
+  border: 2px solid #009999;
+}
+
+/* img {
+  box-shadow: 0 11px 22px -11px #000;
+} */
+
+.grid-container img:nth-child(n+4) {
+  margin-top: 20px
+}
+
+.tabs > span i,
+.tabs > span {
+  -webkit-transition: all 1111ms;
+  -moz-transition: all 1111ms;
+  -o-transition: all 1111ms;
+  -ms-transition: all 1111ms;
+  transition: all 1111ms;
+}
+
+/* Selected button below */
+.tabs > input:checked + span {
+  color: #fff;
+  background-color: transparent;
+  z-index: 4;
+  text-align: center;
+  margin: auto;
+}
+
+.tabs > input:hover + span {
+
+  background-color: transparent;
+  z-index: 4;
+  text-align: center;
+  margin: auto;
+}
+
+#tab-1,
+#tab-1+span {
+  left: 10%;
+}
+
+#tab-2,
+#tab-2+span {
+  left: 30%;
+}
+
+#tab-3,
+#tab-3+span {
+  left: 50%;
+}
+
+#tab-4,
+#tab-4+span {
+  left: 70%;
+}
+
+
+.tab-content {
+  padding: 80px 20px 20px;
+  width: 100%;
+  min-height: 340px;
+}
+
+.tab-content section {
+  width: 100%;
+  display: none;
+}
+
+.tab-content section h1 {
+  margin: 15px auto 0;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+}
+
+#tab-1:checked ~ .tab-content #tab-item-1 {
+	display: block;
+	position: relative;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+
+	justify-content: space-evenly;
+	margin: 30px auto;
+}
+
+#tab-2:checked ~ .tab-content #tab-item-2 {
+  display: block;
+  column-count: 2;
+  position: relative;
+}
+
+#tab-3:checked ~ .tab-content #tab-item-3 {
+  display: block;
+  column-count: 2;
+  position: relative;
+}
+
+#tab-4:checked ~ .tab-content #tab-item-4 {
+  display: block;
+  column-count: 2;
+  position: relative;
+}
+
+/* selected button animation below */
+.irisSlide .line {
+  background: #009999;
+  width: 18%;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-radius: 10px 0 10px 0;
+  -webkit-border-radius: 10px 0 10px 0;
+  -moz-border-radius: 10px 0 10px 0;
+  -ms-border-radius: 10px 0 10px 0;
+  -o-border-radius: 10px 0 10px 0;
+  text-align: center;
+}
+
+#tab-1:checked ~ .line {
+  left: 10%;
+}
+
+#tab-2:checked ~ .line {
+  left: 30%;
+}
+
+#tab-3:checked ~ .line {
+  left: 50%;
+}
+
+#tab-4:checked ~ .line {
+  left: 70%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container description-container">
+		<!-- Title over tab buttons -->
+		<h1>
+			View Source for style, pure CSS no JS
+		</h1>
+
+		<div class="tabs irisSlide">
+			<!-- F1rst radio button -->
+			<input type="radio" id="tab-1" name="tab" checked="checked">
+			<span href="#tab-item-1">
+				View All Models
+			</span>
+
+			<!-- Second radio button -->
+			<input type="radio" id="tab-2" name="tab">
+			<span href="#tab-item-2">
+				Model 1
+			</span>
+
+			<!-- Third radio button -->
+			<input type="radio" id="tab-3" name="tab">
+			<span href="#tab-item-3">
+				Model 2
+			</span>
+
+			<!-- Fourth radio button -->
+			<input type="radio" id="tab-4" name="tab">
+			<span href="#tab-item-4">
+				Model 3
+			</span>
+
+			<!-- Moving element behind buttons -->
+			<div class="line ease">
+			</div>
+			<!-- container fro tabbed areas -->
+			<div class="tab-content">
+				<!-- Attached to First Radio Button -->
+				<section id="tab-item-1">
+					<h2>view all models</h2>
+					<div class="grid-container">
+						<div class="grid-item">
+							<!-- <div class="ribbon ribbon-top-left"><span>NEW 2020</span>	</div> -->
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+1">
+							<p style="text-align: center;">
+								<strong>TITLE # Person Hot Tub</strong><br>
+								77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+								<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+								<br> <span style="color: #009999">More ></span>
+								<br>
+								<br>
+							</p>
+						</div>
+						<div class="grid-item">
+							<!-- <div class="ribbon ribbon-top-left"><span>NEW 2020</span>	</div> -->
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+2">
+						<p style="text-align: center;">
+							<strong>TITLE # Person Hot Tub</strong><br>
+							77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+							<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+							<br> <span style="color: #009999">More ></span>
+							<br>
+							<br>
+						</p>
+						</div>
+						<div class="grid-item">
+							<!-- <div class="ribbon ribbon-top-left"><span>NEW 2020</span>	</div> -->
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+3">
+							<p style="text-align: center;">
+								<strong>TITLE # Person Hot Tub</strong><br>
+								77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+								<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+								<br> <span style="color: #009999">More ></span>
+								<br>
+								<br>
+							</p>
+						</div>
+						<div class="grid-item">
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+4">
+							<p style="text-align: center;">
+								<strong>TITLE # Person Hot Tub</strong><br>
+								77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+								<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+								<br> <span style="color: #009999">More ></span>
+								<br>
+								<br>
+							</p>
+						</div>
+						<div class="grid-item">
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+5">
+							<p style="text-align: center;">
+								<strong>TITLE # Person Hot Tub</strong><br>
+								77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+								<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+								<br> <span style="color: #009999">More ></span>
+								<br>
+								<br>
+							</p>
+						</div>
+						<div class="grid-item">
+							<img src="https://via.placeholder.com/200x200/999999/FFFFFF/?text=overhead+6">
+							<p style="text-align: center;">
+								<strong>TITLE # Person Hot Tub</strong><br>
+								77' x 77' x 77' | <span style="color: #009999">$$$$$</span><br>
+								<span style='font-size:20px; color: gold;'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+								<br> <span style="color: #009999">More ></span>
+								<br>
+								<br>
+							</p>
+						</div>
+				</div>
+				</section>
+				<!-- Attached to Second Radio Button -->
+				<section id="tab-item-2">
+					<div>
+						<h2>
+							new model 1
+						</h2>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo molestiae odio quod ipsa porro
+							error molestias? Enim debitis, laborum recusandae laudantium corrupti vitae exercitationem
+							facilis, non at amet architecto possimus.</p>
+					</div>
+					<div>
+						<img src="https://via.placeholder.com/667x496/999999/FFFFFF/?text=I+am+new+model+number+one">
+					</div>
+				</section>
+				<!-- Attached to Third Radio Button -->
+				<section id="tab-item-3">
+					<div>
+						<h2>
+							new model 2
+						</h2>
+
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo molestiae odio quod ipsa porro
+							error molestias? Enim debitis, laborum recusandae laudantium corrupti vitae exercitationem
+							facilis, non at amet architecto possimus.</p>
+					</div>
+					<div>
+						<img src="https://via.placeholder.com/667x496/999999/FFFFFF/?text=I+am+new+model+number+two">
+					</div>
+				</section>
+				<!-- Attached to Fourth Radio Button -->
+				<section id="tab-item-4">
+					<div>
+						<h2>
+							new model 3
+						</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo molestiae odio quod ipsa porro
+							error molestias? Enim debitis, laborum recusandae laudantium corrupti vitae exercitationem
+							facilis, non at amet architecto possimus.
+						</p>
+					</div>
+					<div>
+						<img src="https://via.placeholder.com/667x496/999999/FFFFFF/?text=I+am+new+model+number+three">
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
